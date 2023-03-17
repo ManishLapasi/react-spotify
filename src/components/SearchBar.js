@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import './SearchBar.css';
-import "./songlist";
+import axios from 'axios';
 
 function SearchBar (){
 
-    console.log(songarr[0]);
+    const options = {/* options */};
+    let url = "https://raw.githubusercontent.com/ManishLapasi/react-spotify/main/src/components/names_ids.csv";
+    let data = []
+    axios.get(url)
+        .then(function (response) {
+            console.log(response)
+            data = response.data.split("\n");
+        })
 
     const [song, setSong] = useState('');
 
