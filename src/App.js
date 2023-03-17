@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
+import Switch from './components/Switch';
 
 function App() {
   return (
     <div className="App">
-      <SearchBar></SearchBar>
+      <div className='topbar'>
+        <SearchBar></SearchBar>
+        <Switch></Switch>
+      </div>
     </div>
   );
 }

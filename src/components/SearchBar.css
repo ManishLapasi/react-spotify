@@ -1,7 +1,5 @@
 .searchbar {
-    padding: 6px;
     border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
+    font-size: 26px;
+    padding: 5px;
 }

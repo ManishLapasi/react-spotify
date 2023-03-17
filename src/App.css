@@ -2,3 +2,8 @@
   padding-left: 5vw;
   padding-top: 5vh;
 }
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+}
