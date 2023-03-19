@@ -19,15 +19,11 @@ jobs:
     - run: npm run build
       env:
         REACT_APP_SONGLISTURL: ${{ secrets.REACT_APP_SONGLISTURL}}
-        SONGLIST_CSV_URL: ${{ secrets.SONGLIST_CSV_URL }}
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@v1
       with:
         target_branch: gh-pages
         build_dir: build
-      env:
-        REACT_APP_SONGLISTURL: ${{ secrets.REACT_APP_SONGLISTURL}}
-        SONGLIST_CSV_URL: ${{ secrets.SONGLIST_CSV_URL }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
