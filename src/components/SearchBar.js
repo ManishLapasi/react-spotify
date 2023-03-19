@@ -61,7 +61,7 @@ function SearchBar (props){
     return (
         <div className="searchbar">
             <input type="text" placeholder='Search for a song!' onChange={handleSearch} value={inputVal}/>
-            <div ref={menuRef} className='dropdownlist' id='ddlist'>
+            <div ref={menuRef} className='dropdownlist hidden' id='ddlist'>
                 {isOpen ? (
                     <div>
                         {filteredlist.map((ele) => (
