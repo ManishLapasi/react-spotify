@@ -13,7 +13,7 @@ function App() {
     let songlist = []
     let id2namesList = {}
 
-    console.log(process.env.SONGLIST_CSV_URL);
+    console.log(process.env.REACT_APP_SONGLISTURL, process.env.SONGLIST_CSV_URL);
 
     axios.get(url)
         .then(function (response) {
