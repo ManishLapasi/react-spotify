@@ -1,53 +1,74 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './SearchBar.css';
-import axios from 'axios';
 
-function SearchBar (){
+function SearchBar (props){
 
-    let url = "https://raw.githubusercontent.com/ManishLapasi/react-spotify/main/src/components/names_ids.csv";
-    let songlist = []
-
-    axios.get(url)
-        .then(function (response) {
-            let data = response.data.split("\n");
-            for (let i=0; i<data.length;i++) {
-                let [id, ...name] = data[i].split(",");
-                let trackname = name.join(",");
-                songlist.push({id:id, name:trackname});
-            }
-        })    
-
+    let songlist = props.songs;
+    let id2nameslist = props.id2names;
+    //console.log(songlist);
 
     const [song, setSong] = useState('');
+    const [inputVal, setInputVal] = useState('');
     const [filteredlist, setFilteredList] = useState([]);
 
-    const handleSearch = (event) => {
-        let val = event.target.value.toLowerCase();
-        //console.log("searching", event.target.value);
+
+    const getsonglist = (val) => {
         let searchedList = [];
+        //console.log("searching for ",val);
         for (let i in songlist) {
-            if (songlist[i].name.toLowerCase().includes(val)){searchedList.push(songlist[i])}
+            if (songlist[i].name.toLowerCase().includes(val)){searchedList.push(songlist[i]);}
             if (searchedList.length>99) {break;}
         }
-        //console.log(searchedList);
-        setFilteredList(searchedList);
+        return Promise.resolve(searchedList);
+    }
+
+    const handleSearch = (event) => {
+        setInputVal(event.target.value);
+        let val = event.target.value.toLowerCase();
+        if (val.length < 3) {
+            setIsOpen(false);
+            return;
+        }
+        
+        getsonglist(val).then(
+            (ans) => {
+                setIsOpen(true);
+                setFilteredList(ans);
+                //console.log(isOpen, filteredlist);
+            }
+        )
+
     }
 
     const handleSelect = (event) => {
-        setSong(event.target.value);
+        let [selected_song_id, selected_song_name] = [event.target.value, id2nameslist[event.target.value]]
+        console.log("selected ", selected_song_id, selected_song_name);
+        setSong(selected_song_id);
+        setIsOpen(false);
+        setInputVal(selected_song_name);
     }
 
+    const [isOpen, setIsOpen] = useState(false); 
+    const menuRef = useRef(null);
+    /*
+    const [listening, setListening] = useState(false); 
+    useEffect(listenForOutsideClicks(listening, setListening, menuRef, setIsOpen));
+    */
 
     return (
         <div className="searchbar">
-            <input type="text" placeholder="Search for a song!" onChange={handleSearch}/>
-            <select onChange={handleSelect}>
-                {filteredlist.map((ele) => (
-                    <option key={ele.id} value={ele.id}>
-                        {ele.name}
-                    </option>
-                ))}
-            </select>
+            <input type="text" placeholder='Search for a song!' onChange={handleSearch} value={inputVal}/>
+            <div ref={menuRef} className='dropdownlist'>
+                {isOpen ? (
+                    <div>
+                        {filteredlist.map((ele) => (
+                        <option key={ele.id} value={ele.id} onClick={handleSelect}>
+                            {ele.name}
+                        </option>
+                    ))}
+                    </div>) : (' ')
+                }
+            </div>
         </div>
     );
 }

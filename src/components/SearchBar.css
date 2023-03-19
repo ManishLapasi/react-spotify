@@ -1,5 +1,15 @@
 .searchbar {
     border: none;
-    font-size: 26px;
     padding: 5px;
+}
+
+.searchbar input {
+    width: 150px;
+}
+
+.searchbar .dropdownlist {
+    max-width: 150px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    max-height: 300px;
 }
