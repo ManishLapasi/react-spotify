@@ -4,10 +4,10 @@ function Switch () {
     return (
         <div className='switchgroup'>
             <label className="switch">
-                <input type="checkbox"></input>
+                <input type="checkbox"/>
                 <span className="slider round"></span>
             </label>
-            <p>Include Explicit Results?</p>
+            <p>Explicit Results</p>
         </div>
     )
 }

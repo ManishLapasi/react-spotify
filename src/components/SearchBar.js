@@ -3,11 +3,9 @@ import './SearchBar.css';
 
 function SearchBar (props){
 
-    let songlist = props.songs;
-    let id2nameslist = props.id2names;
+    let [songlist, id2namesList, setSong] = [props.songs, props.id2names, props.setSong];
     //console.log(songlist);
 
-    const [song, setSong] = useState('');
     const [inputVal, setInputVal] = useState('');
     const [filteredlist, setFilteredList] = useState([]);
 
@@ -43,7 +41,7 @@ function SearchBar (props){
     }
 
     const handleSelect = (event) => {
-        let [selected_song_id, selected_song_name] = [event.target.value, id2nameslist[event.target.value]]
+        let [selected_song_id, selected_song_name] = [event.target.value, id2namesList[event.target.value]]
         console.log("selected ", selected_song_id, selected_song_name);
         setSong(selected_song_id);
         setIsOpen(false);

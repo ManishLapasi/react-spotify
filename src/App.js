@@ -1,12 +1,15 @@
 import React from 'react';
+import { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import Switch from './components/Switch';
+import SubmitButton from './components/SubmitButton';
+import Padder from './components/Padder';
 import axios from 'axios';
 
 function App() {
 
-    let url = "https://raw.githubusercontent.com/ManishLapasi/react-spotify/main/src/components/names_ids.csv";
+    let url = process.env.SONGLIST_CSV_URL;
     let songlist = []
     let id2namesList = {}
 
@@ -21,11 +24,20 @@ function App() {
             }
         })
     
+    const [song, setSong] = useState('');
+
+    const handleOnSubmit = () => {
+      console.log(song);
+    }
+    
     return (
       <div className="App">
         <div className='topbar'>
-          <SearchBar songs={songlist} id2names={id2namesList}></SearchBar>
+          <SearchBar songs={songlist} id2names={id2namesList} setSong={setSong}></SearchBar>
+          <Padder></Padder>
           <Switch></Switch>
+          <Padder></Padder>
+          <SubmitButton onClick={handleOnSubmit}></SubmitButton>
         </div>
       </div>
     );

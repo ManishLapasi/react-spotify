@@ -17,3 +17,13 @@
 .searchbar .dropdownlist.hidden {
     display: none;
 }
+
+@media screen and (max-width:450px) {
+    .searchbar input {
+        width: 100px;
+    }
+
+    .searchbar .dropdownlist{
+        max-width: 100px;
+    }
+}
