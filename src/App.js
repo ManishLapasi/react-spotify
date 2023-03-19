@@ -9,11 +9,9 @@ import axios from 'axios';
 
 function App() {
 
-    let url = "https://raw.githubusercontent.com/ManishLapasi/react-spotify/main/src/components/names_ids.csv";
+    let url = process.env.REACT_APP_SONGLISTURL;
     let songlist = []
     let id2namesList = {}
-
-    console.log(process.env.REACT_APP_SONGLISTURL);
 
     axios.get(url)
         .then(function (response) {
