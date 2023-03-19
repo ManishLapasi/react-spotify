@@ -10,6 +10,10 @@
 .searchbar .dropdownlist {
     max-width: 150px;
     overflow-x: scroll;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 300px;
+}
+
+.searchbar .dropdownlist.hidden {
+    display: none;
 }

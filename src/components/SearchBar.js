@@ -27,11 +27,13 @@ function SearchBar (props){
         let val = event.target.value.toLowerCase();
         if (val.length < 3) {
             setIsOpen(false);
+            document.getElementById("ddlist").classList.add("hidden");
             return;
         }
         
         getsonglist(val).then(
             (ans) => {
+                document.getElementById("ddlist").classList.remove("hidden");
                 setIsOpen(true);
                 setFilteredList(ans);
                 //console.log(isOpen, filteredlist);
@@ -46,6 +48,7 @@ function SearchBar (props){
         setSong(selected_song_id);
         setIsOpen(false);
         setInputVal(selected_song_name);
+        document.getElementById("ddlist").classList.add("hidden");
     }
 
     const [isOpen, setIsOpen] = useState(false); 
@@ -58,7 +61,7 @@ function SearchBar (props){
     return (
         <div className="searchbar">
             <input type="text" placeholder='Search for a song!' onChange={handleSearch} value={inputVal}/>
-            <div ref={menuRef} className='dropdownlist'>
+            <div ref={menuRef} className='dropdownlist' id='ddlist'>
                 {isOpen ? (
                     <div>
                         {filteredlist.map((ele) => (
