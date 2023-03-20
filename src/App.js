@@ -34,7 +34,25 @@ function App() {
       axios.get(searchurl+song)
         .then(function (response) {
             console.log(response);
-            setClosestSongs(response);
+            let res = response.data//.replace(/\s+/g, '');
+            let numsongs = parseInt(response.data.substr(-12).replace(",","").replace(")","").trim());
+            console.log(numsongs);
+            let resSong = []
+            for(let i=0; i<res.length; i++){
+              if (res[i-1]==='{'){
+                let currsong = '';
+                while(res[i+1]!=='}'){
+                  currsong += res[i];
+                  i++;
+                }
+                resSong.push(currsong.trim());
+              }
+            }
+            resSong = resSong.map((ele) => {
+              return Object.fromEntries(ele.split(",\n").map((inst) => inst.trim().split(":").map((entry) => entry.trim().replace(/,\s*$/, "").replaceAll('"',""))));
+            });
+            //console.log(resSong);
+            setClosestSongs(resSong);
         });
     }
     
@@ -53,3 +71,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
