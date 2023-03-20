@@ -34,6 +34,7 @@ function App() {
       axios.get(searchurl+song)
         .then(function (response) {
             console.log(response);
+            setClosestSongs(response);
         });
     }
     
