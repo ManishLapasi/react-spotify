@@ -19,7 +19,7 @@ jobs:
     - run: npm run build
       env:
         REACT_APP_SONGLISTURL: ${{ secrets.REACT_APP_SONGLISTURL}}
-        AWS_LAMBDA_FUNCTION_URL: ${{ secrets.AWS_LAMBDA_FUNCTION_URL}}
+        REACT_APP_AWS_LAMBDA_FUNCTION_URL: ${{ secrets.REACT_APP_AWS_LAMBDA_FUNCTION_URL}}
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@v1
       with:
