@@ -41,7 +41,7 @@ function App() {
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
-      axios.get(searchurl+song)
+      axios.get(searchurl+song+"&explicit=1&loudness=1&tempo=1&danceability=1")
         .then(function (response) {
             console.log(response);
             let res = response.data//.replace(/\s+/g, '');
