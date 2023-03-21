@@ -20,7 +20,7 @@ export default function DisplaySongInfo(props) {
     
     return (
         <div className='boxedinfo'>
-            <select onChange={handleChange}>
+            <select className='selectLabel' onChange={handleChange}>
                 {optionslist.map((val) => 
                 (<option value={val} key={val}>
                     {val}
@@ -28,7 +28,7 @@ export default function DisplaySongInfo(props) {
             </select>
             <ul>
             {sortedSongs.slice(0,5).map((track)=>(
-                <li key={track["track_id"]+props.keyId}>
+                <li className="listItem1" key={track["track_id"]+props.keyId}>
                     <a href={"https://open.spotify.com/track/"+track["track_id"]} target="_blank" rel="noreferrer">
                         {track.track_name}
                     </a>

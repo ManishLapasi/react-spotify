@@ -6,7 +6,7 @@ export default function DisplaySongNames(props) {
         <div className='boxed'>
             <ul>
             {props.input.map((track)=>(
-                <li key={track["track_id"]}><a href={"https://open.spotify.com/track/"+track["track_id"]} target="_blank" rel="noreferrer">{track.track_name}</a></li>
+                <li className='listItem' key={track["track_id"]}><a href={"https://open.spotify.com/track/"+track["track_id"]} target="_blank" rel="noreferrer">{track.track_name}</a></li>
             ))}
             </ul>
         </div>

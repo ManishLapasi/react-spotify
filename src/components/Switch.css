@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.switchgroup p {
+    color: aliceblue;
+}
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;

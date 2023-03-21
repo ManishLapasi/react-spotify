@@ -14,6 +14,10 @@
     max-height: 300px;
 }
 
+.searchbar .dropdownlist div option {
+    color: azure;
+}
+
 .searchbar .dropdownlist.hidden {
     display: none;
 }
