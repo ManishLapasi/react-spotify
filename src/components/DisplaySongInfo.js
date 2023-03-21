@@ -1,33 +1,31 @@
 import './DisplaySongInfo.css';
-import { useState } from 'react';
 
 export default function DisplaySongInfo(props) {
 
     let optionslist = ["acousticness","danceability","energy","instrumentalness","key","liveness","loudness","mode","speechiness","tempo","time_signature","track_duration","valence"]
 
-    let [myattr, setMyAttr] = useState(props.attr);
+    let [myAttr, setMyAttr] =[props.attr, props.setAttr];
     let mysongs = props.input;
-    let [sortedSongs, setSortedSongs] = useState(mysongs);
+    let [sortedSongs, setSortedSongs] = [props.sortedSongs, props.setSortedSongs];
     
     const handleChange = (event) => {
-        console.log("you selected",event.target.value, "original", myattr);
-        //console.log("before",mysongs.map((val) => val[event.target.value]));
+        console.log("you selected",event.target.value, "original", myAttr);
+        console.log("before",mysongs.map((val) => [val.track_name, val[event.target.value]]));
         mysongs = mysongs.sort((a,b) => a[event.target.value]-b[event.target.value]);
-        //console.log("after",mysongs.map((val) => val[event.target.value]));
-        setMyAttr((_val) => {return event.target.value;});
-        setSortedSongs((_val) => {return mysongs;});
+        console.log("after",mysongs.map((val) => [val.track_name, val[event.target.value]]));
+        setMyAttr(event.target.value);
+        setSortedSongs(mysongs.slice(0,5));
     }
     
     return (
         <div className='boxedinfo'>
-            <select className='selectLabel' onChange={handleChange}>
-                {optionslist.map((val) => 
-                (<option value={val} key={val}>
-                    {val}
-                </option>))}
+            <select className='selectLabel' onChange={handleChange} defaultValue={myAttr}>
+                {optionslist.map((val) => (<option value={val} key={val}>
+                        {val}
+                    </option>))}
             </select>
             <ul>
-            {sortedSongs.slice(0,5).map((track)=>(
+            {sortedSongs.map((track)=>(
                 <li className="listItem1" key={track["track_id"]+props.keyId}>
                     <a href={"https://open.spotify.com/track/"+track["track_id"]} target="_blank" rel="noreferrer">
                         {track.track_name}
