@@ -5,12 +5,12 @@ export default function DisplaySongInfo(props) {
 
     let optionslist = ["acousticness","danceability","energy","instrumentalness","key","liveness","loudness","mode","speechiness","tempo","time_signature","track_duration","valence"]
 
-    let [_myattr, setMyAttr] = useState(props.attr);
+    let [myattr, setMyAttr] = useState(props.attr);
     let mysongs = props.input;
     let [sortedSongs, setSortedSongs] = useState(mysongs);
     
     const handleChange = (event) => {
-        console.log("you selected",event.target.value);
+        console.log("you selected",event.target.value, "original", myattr);
         //console.log("before",mysongs.map((val) => val[event.target.value]));
         mysongs = mysongs.sort((a,b) => a[event.target.value]-b[event.target.value]);
         //console.log("after",mysongs.map((val) => val[event.target.value]));
