@@ -1,6 +1,5 @@
 .banner {
     width: 90vw;
-    display: block;
     color: aliceblue;
     margin-left: 5vw;
     margin-top: 5vh;
@@ -14,4 +13,13 @@
     border-radius: 50px;
     text-align: center;
     justify-content: center;
+}
+
+.linker {
+    display: inline-block;
+    background-color: aliceblue;
+    border-radius: 50px;
+    padding: 5px;
+    margin: 5px;
+    text-decoration: none;
 }

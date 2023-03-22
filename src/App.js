@@ -32,10 +32,14 @@ function App(props) {
     let [slider2, setSlider2] = useState(0);
     let [slider3, setSlider3] = useState(0);
 
+    let numsongs = 0;
+
     const [tagline, setTagline] = useState("Type in a song above and tweak sliders to get started!");
     
     const [song, setSong] = useState('');
     const [closestSongs, setClosestSongs] = useState([])
+    const [numSongs, setNumSongs] = useState(0);
+    const [bannerSong, setBannerSong] = useState('');
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
@@ -46,8 +50,9 @@ function App(props) {
             //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
             //console.log(response);
             let res = response.data//.replace(/\s+/g, '');
-            let numsongs = parseInt(response.data.substr(-12).replace(",","").replace(")","").trim());
-            console.log(numsongs);
+            numsongs = parseInt(response.data.substr(-12).replace(",","").replace(")","").trim());
+            setBannerSong(song);
+            setNumSongs(numsongs);
             let resSong = []
             for(let i=0; i<res.length; i++){
               if (res[i-1]==='{'){
@@ -89,7 +94,7 @@ function App(props) {
           <SubmitButton onClick={handleOnSubmit}></SubmitButton>
           <Padder></Padder>
         </div>
-        <Banner tagline={tagline}></Banner>
+        <Banner tagline={tagline} songId={bannerSong} songName={id2namesList[bannerSong]} numSongs={numSongs}></Banner>
         <DisplaySongs closestSongs={closestSongs} attrs={[attr1, attr2, attr3, attr4]} setAttrs={[setAttr1, setAttr2,setAttr3,setAttr4]} sortedSongs={[sortedSongs1, sortedSongs2, sortedSongs3, sortedSongs4]} setSortedSongs={[setSortedSongs1,setSortedSongs2,setSortedSongs3,setSortedSongs4]}></DisplaySongs>
       </div>
     );
