@@ -6,14 +6,14 @@ import Switch from './components/Switch';
 import SubmitButton from './components/SubmitButton';
 import Padder from './components/Padder';
 import DisplaySongs from './components/DisplaySongs';
+import Slider from './components/Slider';
 import axios from 'axios';
 
-function App() {
+function App(props) {
 
-    let url = process.env.REACT_APP_SONGLISTURL;
     let searchurl = process.env.REACT_APP_AWS_LAMBDA_FUNCTION_URL;
-    let songlist = []
-    let id2namesList = {}
+    let songlist = props.songlist;
+    let id2namesList = props.id2namesList;
 
     let [attr1, setAttr1] = useState('acousticness');
     let [attr2, setAttr2] = useState('loudness');
@@ -25,27 +25,19 @@ function App() {
     let [sortedSongs3, setSortedSongs3] = useState([]);
     let [sortedSongs4, setSortedSongs4] = useState([]);
 
-    axios.get(url)
-        .then(function (response) {
-            let data = response.data.split("\n");
-            for (let i=0; i<data.length;i++) {
-                let [id, ...name] = data[i].split(",");
-                let trackname = name.join(",");
-                songlist.push({id:id, name:trackname});
-                id2namesList[id] = trackname;
-            }
-        })
+    let [slider1, setSlider1] = useState(0);
+    let [slider2, setSlider2] = useState(0);
+    let [slider3, setSlider3] = useState(0);
     
     const [song, setSong] = useState('');
     const [closestSongs, setClosestSongs] = useState([])
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
-      // tempo_factor = 1 => returns low tempo, tempo_factor = -1 => returns high tempo
-      // loudness = 1 => returns less louder, loudness = -1 => returns louder
-      // danceability => 1 => returns danceable songs, danceability = -1 => returns not so danceable songs 
-      axios.get(searchurl+song+"&explicit=1&loudness=0&tempo=0&danceability=0")
+      // lower is more related i.e. loudness=-5 returns loud songs, loudness=5 returns soft songs
+      axios.get(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3)
         .then(function (response) {
+          //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
             console.log(response);
             let res = response.data//.replace(/\s+/g, '');
             let numsongs = parseInt(response.data.substr(-12).replace(",","").replace(")","").trim());
@@ -79,6 +71,12 @@ function App() {
           <SearchBar songs={songlist} id2names={id2namesList} setSong={setSong}></SearchBar>
           <Padder></Padder>
           <Switch></Switch>
+          <Padder></Padder>
+          <div className='vertStack'>
+            <Slider sliderVal={slider1} setSliderVal={setSlider1} leftVal={"Softer"} rightVal={"Louder"}></Slider>
+            <Slider sliderVal={slider2} setSliderVal={setSlider2} leftVal={"Lower BPM"} rightVal={"Higher BPM"}></Slider>
+            <Slider sliderVal={slider3} setSliderVal={setSlider3} leftVal={"Not Danceable"} rightVal={"I wanna dance!"}></Slider>
+          </div>
           <Padder></Padder>
           <SubmitButton onClick={handleOnSubmit}></SubmitButton>
         </div>
