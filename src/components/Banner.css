@@ -23,3 +23,8 @@
     margin: 5px;
     text-decoration: none;
 }
+
+.embedder {
+    width: 70vw;
+    margin-left: 10vw;
+}

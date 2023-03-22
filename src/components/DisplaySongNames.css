@@ -1,7 +1,7 @@
 .boxed {
     display: inline-block;
-    min-width: 30vw;
-    min-height: 65vh;
+    min-width: 90vw;
+    min-height: 20vh;
     margin-left: 5vw;
     margin-top: 5vh;
     border-radius: 50px;

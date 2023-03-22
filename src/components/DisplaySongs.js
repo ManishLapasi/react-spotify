@@ -1,6 +1,7 @@
 import './DisplaySongs.css';
 import DisplaySongNames from './DisplaySongNames';
 import DisplaySongInfo from "./DisplaySongInfo";
+import React from 'react';
 
 export default function DisplaySongs(props) {
 

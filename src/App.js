@@ -88,7 +88,7 @@ function App(props) {
           <div className='vertStack'>
             <Slider sliderVal={slider1} setSliderVal={setSlider1} leftVal={"Softer"} rightVal={"Louder"}></Slider>
             <Slider sliderVal={slider2} setSliderVal={setSlider2} leftVal={"Lower BPM"} rightVal={"Higher BPM"}></Slider>
-            <Slider sliderVal={slider3} setSliderVal={setSlider3} leftVal={"Sit"} rightVal={"Dance!"}></Slider>
+            <Slider sliderVal={slider3} setSliderVal={setSlider3} leftVal={"Relax!"} rightVal={"Dance!"}></Slider>
           </div>
           <Padder></Padder>
           <SubmitButton onClick={handleOnSubmit}></SubmitButton>

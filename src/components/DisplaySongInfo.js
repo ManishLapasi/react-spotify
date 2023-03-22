@@ -1,4 +1,6 @@
 import './DisplaySongInfo.css';
+import React from 'react';
+import { Spotify } from "react-spotify-embed";
 
 export default function DisplaySongInfo(props) {
 
@@ -26,11 +28,7 @@ export default function DisplaySongInfo(props) {
             </select>
             <ul>
             {sortedSongs.map((track)=>(
-                <li className="listItem1" key={track["track_id"]+props.keyId}>
-                    <a href={"https://open.spotify.com/track/"+track["track_id"]} target="_blank" rel="noreferrer">
-                        {track.track_name}
-                    </a>
-                </li>
+                <div className="infoEmbedder"><Spotify wide  link={"https://open.spotify.com/track/"+track["track_id"]}></Spotify></div>
             ))}
             </ul>
         </div>

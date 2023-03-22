@@ -1,4 +1,5 @@
 import './Switch.css';
+import React from 'react';
 
 function Switch (props) {
 
