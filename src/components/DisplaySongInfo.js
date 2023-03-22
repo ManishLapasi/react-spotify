@@ -10,9 +10,9 @@ export default function DisplaySongInfo(props) {
     
     const handleChange = (event) => {
         console.log("you selected",event.target.value, "original", myAttr);
-        console.log("before",mysongs.map((val) => [val.track_name, val[event.target.value]]));
+        //console.log("before",mysongs.map((val) => [val.track_name, val[event.target.value]]));
         mysongs = mysongs.sort((a,b) => a[event.target.value]-b[event.target.value]);
-        console.log("after",mysongs.map((val) => [val.track_name, val[event.target.value]]));
+        //console.log("after",mysongs.map((val) => [val.track_name, val[event.target.value]]));
         setMyAttr(event.target.value);
         setSortedSongs(mysongs.slice(0,5));
     }

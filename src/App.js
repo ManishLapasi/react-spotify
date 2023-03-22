@@ -42,9 +42,9 @@ function App(props) {
       // lower is more related i.e. loudness=-5 returns loud songs, loudness=5 returns soft songs
       axios.get(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3)
         .then(function (response) {
-          //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
-          //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
-            console.log(response);
+            //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
+            //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
+            //console.log(response);
             let res = response.data//.replace(/\s+/g, '');
             let numsongs = parseInt(response.data.substr(-12).replace(",","").replace(")","").trim());
             console.log(numsongs);
@@ -61,8 +61,8 @@ function App(props) {
             }
             resSong = resSong.map((ele) => {
               return Object.fromEntries(ele.split(",\n").map((inst) => inst.trim().split(":").map((entry) => entry.trim().replace(/,\s*$/, "").replaceAll('"',""))));
-            });
-            //console.log(resSong);
+            }).filter((ele)=>ele.track_id!==song);
+            console.log("all songs",resSong);
             setClosestSongs(resSong);
             setSortedSongs1(resSong.sort((a,b) => a[attr1]-b[attr1]).slice(0,5));
             setSortedSongs2(resSong.sort((a,b) => a[attr2]-b[attr2]).slice(0,5));

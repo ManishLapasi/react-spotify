@@ -5,7 +5,7 @@ export default function Slider(props) {
     let [sliderVal, setSliderVal] = [props.sliderVal, props.setSliderVal];
 
     const handleSliderChange = (event) => {
-        console.log("value is now ",event.target.value);
+        //console.log("value is now ",event.target.value);
         setSliderVal(event.target.value);
     }
 
