@@ -5,8 +5,8 @@
     margin-left: 5vw;
     margin-top: 5vh;
     border-radius: 50px;
-    border: 2px solid var(--blurcolor);
-    box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);
+    border: 5px solid var(--blurcolor);
+    /*box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);*/
     background-color: var(--boxbgcolor);
 }
 

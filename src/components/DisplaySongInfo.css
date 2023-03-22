@@ -4,8 +4,8 @@
     margin-top: 5vh;
     min-width: 42vw;
     min-height: 40vh;
-    border: 2px solid var(--blurcolor);
-    box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);
+    border: 5px solid var(--blurcolor);
+    /*box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);*/
     background-color: var(--boxbgcolor);
     backdrop-filter: blur(20px);
     transform: perspective(500px);
