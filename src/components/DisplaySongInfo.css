@@ -6,6 +6,7 @@
 .boxedinfo {
     display: block;
     margin-left: 1vw;
+    margin-top: 1vh;
     width: 30vw;
     height: 38vh;
     border: 5px solid var(--color1);

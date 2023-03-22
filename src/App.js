@@ -41,7 +41,10 @@ function App() {
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
-      axios.get(searchurl+song+"&explicit=1&loudness=1&tempo=1&danceability=1")
+      // tempo_factor = 1 => returns low tempo, tempo_factor = -1 => returns high tempo
+      // loudness = 1 => returns less louder, loudness = -1 => returns louder
+      // danceability => 1 => returns danceable songs, danceability = -1 => returns not so danceable songs 
+      axios.get(searchurl+song+"&explicit=1&loudness=0&tempo=0&danceability=0")
         .then(function (response) {
             console.log(response);
             let res = response.data//.replace(/\s+/g, '');

@@ -7,6 +7,9 @@
     display: inline-block;
     width: 30vw;
     margin-left: 5vw;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px rebeccapurple, -5px 5px 5px rebeccapurple, 0px -5px 5px rebeccapurple;
+    background-color: slategray;
 }
 
 .boxed ul {

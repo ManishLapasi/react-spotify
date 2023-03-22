@@ -12,6 +12,9 @@
     overflow-x: scroll;
     overflow-y: auto;
     max-height: 300px;
+    position: absolute;
+    z-index: 1;
+    background-color: var(--bgcolor);
 }
 
 .searchbar .dropdownlist div option {
