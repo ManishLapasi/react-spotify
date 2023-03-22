@@ -6,9 +6,23 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  width: 90vw;
+  margin-left: 5vw;
+  border-radius: 50px;
+  border: 2px solid var(--blurcolor);
+  box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);
+  background-color: var(--boxbgcolor);
 }
 
 .topbar .vertStack {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width:600px) {
+  .topbar {
+    flex-direction: column;
+  }
 }

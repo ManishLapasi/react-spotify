@@ -1,9 +1,16 @@
 .displaydiv {
     display: flex;
     flex-direction: row;
+    width: 90vw;
 }
 
 .displaydivrow {
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width:800px) {
+    .displaydiv {
+        flex-direction: column;
+    }
 }

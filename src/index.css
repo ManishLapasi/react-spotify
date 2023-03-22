@@ -1,5 +1,8 @@
 :root {
-  --bgcolor: rgb(110, 79, 110);
+  --bgcolor: black;
+  --boxbgcolor: rgb(48, 59, 70);
+  --shadowcolor: yellow;
+  --blurcolor: yellow;
 }
 
 body {

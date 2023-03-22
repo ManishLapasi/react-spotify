@@ -8,6 +8,7 @@ import Padder from './components/Padder';
 import DisplaySongs from './components/DisplaySongs';
 import Slider from './components/Slider';
 import axios from 'axios';
+import Banner from './components/Banner';
 
 function App(props) {
 
@@ -20,6 +21,8 @@ function App(props) {
     let [attr3, setAttr3] = useState('energy');
     let [attr4, setAttr4] = useState('danceability');
 
+    let [explicit, setExplicit] = useState(true);
+
     let [sortedSongs1, setSortedSongs1] = useState([]);
     let [sortedSongs2, setSortedSongs2] = useState([]);
     let [sortedSongs3, setSortedSongs3] = useState([]);
@@ -28,6 +31,8 @@ function App(props) {
     let [slider1, setSlider1] = useState(0);
     let [slider2, setSlider2] = useState(0);
     let [slider3, setSlider3] = useState(0);
+
+    const [tagline, setTagline] = useState("Type in a song above and tweak sliders to get started!");
     
     const [song, setSong] = useState('');
     const [closestSongs, setClosestSongs] = useState([])
@@ -35,8 +40,9 @@ function App(props) {
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
       // lower is more related i.e. loudness=-5 returns loud songs, loudness=5 returns soft songs
-      axios.get(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3)
+      axios.get(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3)
         .then(function (response) {
+          //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
           //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
             console.log(response);
             let res = response.data//.replace(/\s+/g, '');
@@ -62,24 +68,28 @@ function App(props) {
             setSortedSongs2(resSong.sort((a,b) => a[attr2]-b[attr2]).slice(0,5));
             setSortedSongs3(resSong.sort((a,b) => a[attr3]-b[attr3]).slice(0,5));
             setSortedSongs4(resSong.sort((a,b) => a[attr4]-b[attr4]).slice(0,5));
+            setTagline("For the song: '"+id2namesList[song]+"', this app searched through "+numsongs+" songs!");
         });
     }
     
     return (
       <div className="App">
         <div className='topbar'>
+          <Padder></Padder>
           <SearchBar songs={songlist} id2names={id2namesList} setSong={setSong}></SearchBar>
           <Padder></Padder>
-          <Switch></Switch>
+          <Switch explicit={explicit} setExplicit={setExplicit}></Switch>
           <Padder></Padder>
           <div className='vertStack'>
             <Slider sliderVal={slider1} setSliderVal={setSlider1} leftVal={"Softer"} rightVal={"Louder"}></Slider>
             <Slider sliderVal={slider2} setSliderVal={setSlider2} leftVal={"Lower BPM"} rightVal={"Higher BPM"}></Slider>
-            <Slider sliderVal={slider3} setSliderVal={setSlider3} leftVal={"Not Danceable"} rightVal={"I wanna dance!"}></Slider>
+            <Slider sliderVal={slider3} setSliderVal={setSlider3} leftVal={"Sit"} rightVal={"Dance!"}></Slider>
           </div>
           <Padder></Padder>
           <SubmitButton onClick={handleOnSubmit}></SubmitButton>
+          <Padder></Padder>
         </div>
+        <Banner tagline={tagline}></Banner>
         <DisplaySongs closestSongs={closestSongs} attrs={[attr1, attr2, attr3, attr4]} setAttrs={[setAttr1, setAttr2,setAttr3,setAttr4]} sortedSongs={[sortedSongs1, sortedSongs2, sortedSongs3, sortedSongs4]} setSortedSongs={[setSortedSongs1,setSortedSongs2,setSortedSongs3,setSortedSongs4]}></DisplaySongs>
       </div>
     );

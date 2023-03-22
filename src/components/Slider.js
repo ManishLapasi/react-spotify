@@ -11,7 +11,7 @@ export default function Slider(props) {
 
     return (
         <div className="sliderObj">
-            {props.leftVal}<input type="range" min="-3" max="3" defaultValue={sliderVal} onChange={handleSliderChange} />{props.rightVal}
+            <span>{props.leftVal}</span><input type="range" min="-3" max="3" defaultValue={sliderVal} onChange={handleSliderChange} /><span>{props.rightVal}</span>
         </div>
     )
 }

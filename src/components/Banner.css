@@ -1,0 +1,17 @@
+.banner {
+    width: 90vw;
+    display: block;
+    color: aliceblue;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    min-height: 5vh;
+    border: 2px solid var(--blurcolor);
+    box-shadow: 5px 5px 5px var(--blurcolor), -5px 5px 5px var(--blurcolor), 0px -5px 5px var(--blurcolor);
+    background-color: var(--boxbgcolor);
+    backdrop-filter: blur(20px);
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+    border-radius: 50px;
+    text-align: center;
+    justify-content: center;
+}
