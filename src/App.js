@@ -43,10 +43,11 @@ function App(props) {
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
+      //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-(slider1/3).toFixed(2)+"&tempo="+-(slider2/3).toFixed(2)+"&danceability="+-(slider3/3).toFixed(2));
       // lower is more related i.e. loudness=-5 returns loud songs, loudness=5 returns soft songs
-      axios.get(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3)
+      axios.get(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-(slider1/3).toFixed(2)+"&tempo="+-(slider2/3).toFixed(2)+"&danceability="+-(slider3/3).toFixed(2))
         .then(function (response) {
-            //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
+            console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
             //console.log(searchurl+song+"&explicit=1&loudness="+-slider1+"&tempo="+-slider2+"&danceability="+-slider3);
             //console.log(response);
             let res = response.data//.replace(/\s+/g, '');
