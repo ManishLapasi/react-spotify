@@ -34,7 +34,7 @@ function App(props) {
 
     let numsongs = 0;
 
-    const [tagline, setTagline] = useState("Type in a song above and tweak sliders to get started!");
+    const [tagline, setTagline] = useState("Type in a song above and search to get recommendations! (You can tweak the sliders to prioritize softer/louder songs etc)");
     
     const [song, setSong] = useState('');
     const [closestSongs, setClosestSongs] = useState([])
