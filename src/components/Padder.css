@@ -3,6 +3,12 @@
     width: 5vw;
 }
 
+@media screen and (max-width:1030px) {
+    .padder {
+        width: 10px;
+    }
+}
+
 @media screen and (max-width:600px) {
     .padder {
         width: 0px;

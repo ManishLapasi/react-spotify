@@ -1,5 +1,5 @@
 .switchgroup {
-    padding-top: 5px;
+    padding-top: 20px;
     padding-left: 10px;
     display: flex;
     flex-direction: column;
@@ -8,6 +8,7 @@
 
 .switchgroup p {
     color: aliceblue;
+    text-align: center;
 }
 
 /* The switch - the box around the slider */

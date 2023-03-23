@@ -3,3 +3,11 @@
     align-items: center;
     color: white;
 }
+
+.sliderObj .leftText {
+    text-align: right;
+}
+
+.sliderObj .rightText {
+    text-align: left;
+}
