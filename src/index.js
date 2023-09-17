@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let url = process.env.REACT_APP_SONGLISTURL;
+let url = "./names_ids.csv";
 let songlist = []
 let id2namesList = {}
 
