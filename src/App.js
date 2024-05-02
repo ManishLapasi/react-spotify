@@ -43,6 +43,7 @@ function App(props) {
 
     const handleOnSubmit = () => {
       console.log("searching for song with id",song);
+      setTagline((tagline) => "Searching...");
       //console.log(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-(slider1/3).toFixed(2)+"&tempo="+-(slider2/3).toFixed(2)+"&danceability="+-(slider3/3).toFixed(2));
       // lower is more related i.e. loudness=-5 returns loud songs, loudness=5 returns soft songs
       axios.get(searchurl+song+"&explicit="+(+explicit)+"&loudness="+-(slider1/3).toFixed(2)+"&tempo="+-(slider2/3).toFixed(2)+"&danceability="+-(slider3/3).toFixed(2))
@@ -74,7 +75,7 @@ function App(props) {
             setSortedSongs2(resSong.sort((a,b) => a[attr2]-b[attr2]).slice(0,5));
             setSortedSongs3(resSong.sort((a,b) => a[attr3]-b[attr3]).slice(0,5));
             setSortedSongs4(resSong.sort((a,b) => a[attr4]-b[attr4]).slice(0,5));
-            setTagline("For the song: '"+id2namesList[song]+"', this app searched through "+numsongs+" songs!");
+            setTagline((tagline) => "For the song: '"+id2namesList[song]+"', this app searched through "+numsongs+" songs!");
         });
     }
     
