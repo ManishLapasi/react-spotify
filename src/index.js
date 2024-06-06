@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let url = "./names_ids.csv";
+let url = "https://raw.githubusercontent.com/ManishLapasi/react-spotify/main/public/names_ids.csv";
 let songlist = []
 let id2namesList = {}
 
