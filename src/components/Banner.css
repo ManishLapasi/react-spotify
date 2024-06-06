@@ -4,10 +4,11 @@
     margin-left: 5vw;
     margin-top: 5vh;
     min-height: 5vh;
+    position: relative;
     border: 5px solid var(--blurcolor);
     background-color: var(--boxbgcolor);
     backdrop-filter: blur(20px);
-    transform: perspective(500px);
+    z-index: 1;
     transform-style: preserve-3d;
     border-radius: 50px;
     text-align: center;
