@@ -9,23 +9,24 @@
     border-radius: 5px;
 }
 
-.searchbar .dropdownlist {
+.dropdownlist {
     max-width: 150px;
     overflow-x: scroll;
     overflow-y: auto;
     max-height: 300px;
     height: 300px;
     visibility: visible;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     background-color: var(--bgcolor);
-}
-
-.searchbar .dropdownlist div option {
     color: azure;
 }
 
-.searchbar .dropdownlist.hidden {
+.dropdownlist div option {
+    color: azure;
+}
+
+.dropdownlist.hidden {
     visibility: hidden;
 }
 
@@ -34,7 +35,7 @@
         width: 100px;
     }
 
-    .searchbar .dropdownlist{
+    .dropdownlist{
         max-width: 100px;
     }
 }
